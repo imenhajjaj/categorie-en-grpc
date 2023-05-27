@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package cart;
+
+message CartItem {
+  string id = 1;
+  string productId = 2;
+  int32 quantity = 3;
+}
+
+message AddToCartRequest {
+  string productId = 1;
+  int32 quantity = 2;
+}
+
+message RemoveFromCartRequest {
+  string cartItemId = 1;
+}
+
+message GetCartRequest {
+}
+
+service CartService {
+  rpc AddToCart (AddToCartRequest) returns (CartItem);
+  rpc RemoveFromCart (RemoveFromCartRequest) returns (CartItem);
+  rpc GetCart (GetCartRequest) returns (stream CartItem);
+}

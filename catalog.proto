@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package catalog;
+
+message Product {
+  string id = 1;
+  string name = 2;
+  float price = 3;
+}
+
+service CatalogService {
+  rpc GetProductById (GetProductByIdRequest) returns (Product);
+  rpc GetAllProducts (GetAllProductsRequest) returns (stream Product);
+}
+
+message GetProductByIdRequest {
+  string id = 1;
+}
+
+message GetAllProductsRequest {
+}
